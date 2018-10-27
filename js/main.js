@@ -75,6 +75,7 @@ const sortearSemRepetir = function() {
 
 document.getElementById('btnSortear')
         .addEventListener('click', () => {
+            //document.getElementById("btnSortear").style.display = 'none';
             let i=0;
             while(i<10000){
                 setTimeout(function(){
@@ -89,6 +90,7 @@ document.getElementById('btnSortear')
                 else
                     i+=800;
             }
+            //document.getElementById("btnSortear").style.display = "block";
         });
 
 
@@ -113,5 +115,5 @@ document.getElementById('btnLimpar')
         .addEventListener('click', () => {
             limparSorteados();        
     });
-        
+
 buildSorteado(sortearSemRepetir());
