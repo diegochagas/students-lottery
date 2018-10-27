@@ -15,9 +15,9 @@ body {
 }
 
 .sorteado img {
+  border: 10px solid red;
   width: 250px;
   border-radius: 50%;
-
 }
 
 .alunos-exibidos{
