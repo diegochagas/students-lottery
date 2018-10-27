@@ -88,8 +88,7 @@ document.getElementById('btnSortear').addEventListener('click', () => {
             let i=0;
             while(i<10000){
                 setTimeout(function(){
-                    const sorteado = sortearSemRepetir();
-                    buildSorteado(sorteado);
+                    buildSorteado(randomNum(1,ALUNOS.length))
                 }, i);
                 if(i<5000)
                     i+=300;
@@ -98,6 +97,8 @@ document.getElementById('btnSortear').addEventListener('click', () => {
                 else
                     i+=800;
             }
+            const sorteado = sortearSemRepetir();
+            buildSorteado(sorteado);
         });
 
 
