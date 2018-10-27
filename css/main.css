@@ -1,0 +1,55 @@
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.background-piao{
+  display: block;
+  background-image: url("../images/background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: fixed;
+}
+
+.sorteado{
+  
+}
+
+.sorteado img {
+  width: 250px;
+  border-radius: 50%;
+
+}
+
+.alunos-exibidos{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.aluno-input{
+  display: block;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+button {
+  background-color: #009D4D;
+  border: none;
+  color: white;
+  padding: 15px 42px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#btnLimpar{
+  background-color: #f00;
+}
