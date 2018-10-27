@@ -119,7 +119,7 @@ const divListaAlunos = document.getElementById('lista-alunos');
 
 buildSorteado(sortearSemRepetir());
 
-
+/*
 const historicoSorteados = function() {
    return JA_SORTEADO;
 }
@@ -139,4 +139,4 @@ document.getElementById('btnHistorico')
                 }                
             });
             
-        }); 
+        }); */
