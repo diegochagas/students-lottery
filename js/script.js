@@ -118,3 +118,25 @@ const divListaAlunos = document.getElementById('lista-alunos');
 });*/
 
 buildSorteado(sortearSemRepetir());
+
+
+const historicoSorteados = function() {
+   return JA_SORTEADO;
+}
+
+document.getElementById('btnHistorico')
+        .addEventListener('click', () => {
+            divListaAlunos.innerHTML = '';
+            historicoSorteados().forEach(numero_aluno => {
+                if (numero_aluno > 0) {
+                    let aluno = ALUNOS.filter(aluno => aluno.num == numero_aluno)[0];
+                    const divAluno = document.createElement("div");
+                    const lblAluno = document.createElement("label");
+                    lblAluno.innerHTML = aluno.nome;
+                    divAluno.setAttribute("class", "elem-aluno");
+                    divAluno.appendChild(lblAluno);
+                    divListaAlunos.appendChild(divAluno);
+                }                
+            });
+            
+        }); 
