@@ -1,33 +1,30 @@
 <!DOCTYPE html>
-<html class="no-js">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Sorteador</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-        <link rel="stylesheet" type="text/css" media="screen" href="css/main.css"/>
-        <link href="https://fonts.googleapis.com/css?family=Krub" rel="stylesheet">
-    </head>
-    <body>
-        <div class="container">
-          <div id="alunos-exibidos"></div>
-          <div class="background-piao"></div>
-          <div class="sorteado"></div>
-          <div>
-              <button id="btnSortear">Sortear</button>
-              <button id="btnLimpar">Resetar sorteio</button>
-              <!-- <button id="btnHistorico">Exibir histórico</button> -->
-          </div>
-          <div id="alunos-sorteados"></div>
-        </div>
-        <audio autoplay>
-          <source src="audios/peao.mp3" type="audio/mpeg">
-        </audio>
-        <div id="lista-alunos">
-
-       </div>
-        <script src="js/script.js"></script>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Loterry</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="src/css/main.css">
+</head>
+<body>
+    <div class="container">
+      <div id="alunos-exibidos"></div>
+      <div class="background-piao"></div>
+      <div class="sorteado"></div>
+      <div>
+        <button id="btnSortear">Sortear</button>
+        <button id="btnLimpar">Resetar sorteio</button>
+        <!-- <button id="btnHistorico">Exibir histórico</button> -->
+      </div>
+      <div id="alunos-sorteados"></div>
+    </div>
+    <audio autoplay>
+      <source src="src/audios/peao.mp3" type="audio/mpeg">
+      </audio>
+      <div id="lista-alunos">
+        
+      </div>      
+      <script src="src/main.js"></script>
     </body>
-</html>
+    </html>

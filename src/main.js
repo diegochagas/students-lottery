@@ -65,7 +65,7 @@ const sortear = function () {
 const buildSorteado = function(sorteado) {
     const divSorteado = document.getElementsByClassName('sorteado')[0];
     /* HTML sendo representado no DOM */
-    divSorteado.innerHTML = "<img alt='sorteado' class='imgsorteado' src='alunos/"+sorteado+".jpg' />";
+    divSorteado.innerHTML = "<img alt='sorteado' class='imgsorteado' src='src/images/alunos/"+sorteado+".jpg' />";
 }
 
 /* Sortea um número até que ele não esteja no set de sorteados */
