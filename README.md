@@ -1,2 +1,9 @@
-# gama-exercise-lottery
-Lottery test for training in Gama Academy.
+# Students lottery
+
+A student lottery made with JavaScript.
+
+## Technologies used
+
+- HTML
+- CSS
+- JavaScript
