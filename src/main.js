@@ -53,12 +53,10 @@ function showStudent(studentId) {
 }
 
 function updateListOfDrawnStudents (studentId) {
-  const tagImg = `<img class ='drawn-students' src='./src/images/students/${studentId}.jpg'/>`;
-  document.getElementById('drawn-students').appendChild(tagImg);
+  const tagImg = `<img class ='image-drawn-students' src='./src/images/students/${studentId}.jpg'/>`;
+  document.getElementById('container-drawn-students').innerHTML += tagImg;
 }
 
-
-/*
 function loadingStudents(){
   let i = 0;
   while(i < 10000){
@@ -75,13 +73,13 @@ function loadingStudents(){
   }
   return true;
 }
-*/
 
 document.getElementById('btnDraw').addEventListener('click', () => {
   // loadingStudents();
   const student = drawStudent();
   showStudent(student.id);
   updateStudentsLists(student);
+  updateListOfDrawnStudents(student.id);
 });
 
 showStudent(defaultStudentImageId);

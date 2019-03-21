@@ -40,6 +40,21 @@ body {
 	height: 100vh;
 }
 
+.container-drawn-students{
+  position: fixed;
+  height: 20px;
+  max-width: 25%;
+  top: 10px;
+  left: 10px;
+  z-index: 12;
+}
+
+.image-drawn-students {
+  margin: 0 2px;
+  border: 1px solid #009D4D;
+  height: 100%;
+}
+
 button {
   background-color: #009D4D;
   border: none;
