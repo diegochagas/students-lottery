@@ -64,36 +64,52 @@ function updateListOfDrawnStudents (studentId) {
   document.getElementById('container-drawn-students').innerHTML += tagImg;
 }
 
-async function loadingStudents(){
+function loadingStudents(){
   let i = 0;
-  while(i < 10000){
-    setTimeout(function(){
-      const student = drawStudent();
-      showStudent(student.id);
-    }, i);
-    if(i<5000) {
-      i+=300;
-    } else if(i<7000) {
-      i+=500;
-    } else {
-      i+=800;
-    }
-  }
-  return true;
+  return new Promise((resolve, reject) => {
+    do {
+      setTimeout(function(){
+        const student = drawStudent();
+        showStudent(student.id);
+      }, i);
+      if(i < 5000) {
+        i+=300;
+      } else if(i < 7000) {
+        i += 500;
+      } else {
+        i += 800;
+      }
+    } while (i < 10000);
+  });
+}
+
+function playAudio(){
+  const audioElement = `
+    <audio autoplay>
+      <source src="src/audios/peao.mp3" type="audio/mpeg">
+    </audio>
+  `;
+  document.getElementById('container-audio').innerHTML = audioElement;
+}
+
+function stopAudio(){
+  document.getElementById('container-audio').innerHTML = "";
 }
 
 document.getElementById('btnDraw').addEventListener('click', (event) => {
-  loadingStudents()
-    .then(() => {
-      if(temporaryStudents.length === 1){
-        event.target.disabled = true;
-      }
+  playAudio();
+  if(temporaryStudents.length === 1){
+    event.target.disabled = true;
+  }
+  loadingStudents().then(function() {
       const student = drawStudent();
       showStudent(student.id);
       updateStudentsLists(student);
       updateListOfDrawnStudents(student.id);
-    }).catch(() => {
-      console.error(`Function loading students doesn't work`);
+      stopAudio();
+    }).catch(err => {
+      stopAudio();
+      console.error(`Function loading students doesn't work: ${err}`);
     });
 });
 
