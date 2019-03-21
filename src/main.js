@@ -44,7 +44,14 @@ function drawStudent () {
 
 function updateStudentsLists(student){
   drawnStudents.push(student);
-  temporaryStudents.splice(temporaryStudents.indexOf(drawStudent), 1);
+  let studentIndex = 0;
+  for(let i = 0; i < temporaryStudents.length; i++){
+    if (temporaryStudents[i].id === student.id) {
+      studentIndex = i;
+      break;
+    } 
+  }
+  temporaryStudents.splice(studentIndex, 1);
 }
 
 function showStudent(studentId) {
