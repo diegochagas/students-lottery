@@ -1,3 +1,4 @@
+const defaultStudentImageId = 0;
 const students = [
   {id: 1, name: 'claudia yamada', drawnDate: ""},
   {id: 2, name: 'geovanna ribeiro', drawnDate: ""},
@@ -31,31 +32,31 @@ const students = [
   {id: 30, name: 'bruno ferreira', drawnDate: ""},
   {id: 31, name: 'william rodrigues', drawnDate: ""}
 ];
-
 const temporaryStudents = students;
-
 const drawnStudents = [];
-
 const randomNum = (min, max) => Math.round(Math.random() * (max-min) + min);
 
-function draw () {
+function drawStudent () {
   const drawNumber = randomNum(1, temporaryStudents.length);
-  const drawStudent = temporaryStudents.find(student => student.id === drawNumber);
-  return drawStudent;
+  const student = temporaryStudents.find(temporaryStudent => temporaryStudent.id === drawNumber);
+  return student;
 }
 
-function moveStudentFromLists(){
-  drawnStudents.push(drawStudent);
+function updateStudentsLists(student){
+  drawnStudents.push(student);
   temporaryStudents.splice(temporaryStudents.indexOf(drawStudent), 1);
 }
 
-const showStudent = function(studentId) {
+function showStudent(studentId) {
   document.getElementById('student').innerHTML = `<div id='imgDraw'/>`;
   document.getElementById('imgDraw').style.backgroundImage = style=`url('./src/images/students/${studentId}.jpg')`;
 }
 
-const studentBackground = 0;
-showStudent(studentBackground);
+function updateListOfDrawnStudents (studentId) {
+  const tagImg = `<img class ='drawn-students' src='./src/images/students/${studentId}.jpg'/>`;
+  document.getElementById('drawn-students').appendChild(tagImg);
+}
+
 
 /*
 function loadingStudents(){
@@ -78,29 +79,9 @@ function loadingStudents(){
 
 document.getElementById('btnDraw').addEventListener('click', () => {
   // loadingStudents();
-  addToListOfDrawn(drawStudent);
+  const student = drawStudent();
+  showStudent(student.id);
+  updateStudentsLists(student);
 });
 
-/*
-const divListaStudents = document.getElementById('lista-Students');
-  students.forEach(Student => {
-    const divStudent = document.createElement("div");
-    const iptStudent = document.createElement("input");
-    const lblStudent = document.createElement("label");
-    iptStudent.type = "checkbox";
-    iptStudent.id = Student.num;
-    iptStudent.checked = false;
-    lblStudent.innerHTML = Student.name;
-    lblStudent.htmlFor = Student.num;
-    divStudent.setAttribute("class", "elem-Student");
-    divStudent.appendChild(iptStudent);
-    divStudent.appendChild(lblStudent);
-    divListaStudents.appendChild(divStudent);
-});
-
-
-
-const historicoSorteados = function() {
-   return drawnStudents;
-}
-*/
+showStudent(defaultStudentImageId);
