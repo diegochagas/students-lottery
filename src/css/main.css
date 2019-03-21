@@ -1,32 +1,34 @@
 body {
   font-family: 'Roboto', sans-serif;
+  background-color: black;
 }
 
-.background-piao{
-  display: block;
+.background-spinning {
   background-image: url("../images/background.png");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100%;
   position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
 }
 
-.sorteado{
-  
+#student {
+  position: fixed;
+  width: 100%;
+  height: 100%;;
 }
 
-.sorteado img {
-  border: 10px solid red;
-  width: 250px;
-  border-radius: 50%;
+#imgDraw {
+  background-repeat: no-repeat;
+  background-size: 100%;   
+  height: 100%;
+  margin: 0 auto;
+  width: 50%;
+  z-index: 1;
 }
 
-.alunos-exibidos{
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.aluno-input{
+#student .student-input{
   display: block;
 }
 
@@ -50,6 +52,11 @@ button {
   cursor: pointer;
 }
 
-#btnLimpar{
+#btnReset{
   background-color: #f00;
+}
+
+.buttons-draw{
+  position: fixed;
+  z-index: 12;
 }

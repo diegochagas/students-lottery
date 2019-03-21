@@ -8,23 +8,21 @@
   <link rel="stylesheet" type="text/css" media="screen" href="src/css/main.css">
 </head>
 <body>
-    <div class="container">
-      <div id="alunos-exibidos"></div>
-      <div class="background-piao"></div>
-      <div class="sorteado"></div>
-      <div>
-        <button id="btnSortear">Sortear</button>
-        <button id="btnLimpar">Resetar sorteio</button>
-        <!-- <button id="btnHistorico">Exibir histórico</button> -->
-      </div>
-      <div id="alunos-sorteados"></div>
+  <div class="container">
+    <div id="drawn-students"></div>
+    <div class="buttons-draw">
+      <button id="btnDraw">Draw</button>
+      <button id="btnReset">Reset</button>
     </div>
-    <audio autoplay>
-      <source src="src/audios/peao.mp3" type="audio/mpeg">
-      </audio>
-      <div id="lista-alunos">
-        
-      </div>      
-      <script src="src/main.js"></script>
-    </body>
-    </html>
+    <div class="background-spinning"></div>
+    <div id="student"></div>
+  </div>
+  <audio autoplay>
+    <source src="src/audios/peao.mp3" type="audio/mpeg">
+    </audio>
+    <div id="drawn-students">
+      
+    </div>      
+    <script src="src/main.js"></script>
+  </body>
+</html>
