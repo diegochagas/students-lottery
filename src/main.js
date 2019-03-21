@@ -37,8 +37,8 @@ const drawnStudents = [];
 const randomNum = (min, max) => Math.round(Math.random() * (max-min) + min);
 
 function drawStudent () {
-  const drawNumber = randomNum(1, temporaryStudents.length);
-  const student = temporaryStudents.find(temporaryStudent => temporaryStudent.id === drawNumber);
+  const drawNumber = randomNum(0, temporaryStudents.length - 1);
+  const student = temporaryStudents[drawNumber];
   return student;
 }
 
@@ -81,7 +81,10 @@ function loadingStudents(){
   return true;
 }
 
-document.getElementById('btnDraw').addEventListener('click', () => {
+document.getElementById('btnDraw').addEventListener('click', (event) => {
+  if(temporaryStudents.length === 1){
+    event.target.disabled = true;
+  }
   // loadingStudents();
   const student = drawStudent();
   showStudent(student.id);
