@@ -66,12 +66,10 @@ function updateListOfDrawnStudents (studentId) {
 
 function loadingStudents(){
   let i = 0;
-  return new Promise((resolve, reject) => {
-    do {
-      setTimeout(function(){
-        const student = drawStudent();
-        showStudent(student.id);
-      }, i);
+  do {
+    setTimeout(function(){
+      const student = drawStudent();
+      showStudent(student.id);
       if(i < 5000) {
         i+=300;
       } else if(i < 7000) {
@@ -79,8 +77,8 @@ function loadingStudents(){
       } else {
         i += 800;
       }
-    } while (i < 10000);
-  });
+    }, i);
+  } while (i < 10000);
 }
 
 function playAudio(){
@@ -96,18 +94,33 @@ function stopAudio(){
   document.getElementById('container-audio').innerHTML = "";
 }
 
+function disableButton(buttton){
+  event.target.disabled = true;
+}
+
+function enableButton(button){
+  button.disabled = false;
+}
+
 document.getElementById('btnDraw').addEventListener('click', (event) => {
+  const isLastElement = temporaryStudents.length === 1;
   playAudio();
-  if(temporaryStudents.length === 1){
-    event.target.disabled = true;
+  if(isLastElement){
+    disableButton(event.target);
   }
-  loadingStudents().then(function() {
+  loadingStudents()
+    .then(() => {
       const student = drawStudent();
       showStudent(student.id);
       updateStudentsLists(student);
       updateListOfDrawnStudents(student.id);
       stopAudio();
-    }).catch(err => {
+      if(!isLastElement) {
+        enableButton(event.target);
+      }
+    }).then(() => 
+      resolve
+    ).catch(err => {
       stopAudio();
       console.error(`Function loading students doesn't work: ${err}`);
     });
