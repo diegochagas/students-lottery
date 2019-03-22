@@ -32,8 +32,8 @@ const students = [
   {id: 30, name: 'bruno ferreira', drawnDate: ""},
   {id: 31, name: 'william rodrigues', drawnDate: ""}
 ];
-const temporaryStudents = students;
-const drawnStudents = [];
+let temporaryStudents = [...students];
+let drawnStudents = [];
 const randomNum = (min, max) => Math.round(Math.random() * (max-min) + min);
 
 function drawStudent () {
@@ -71,8 +71,8 @@ function loadStudent(){
 }
 
 function setDeceleratingTimeout(callback, factor, times){
-  let valueReturned;
   return new Promise(resolve => {
+    let valueReturned;
     let run = function(tick, counter) {
       return function() {
         if(--tick >= 0) {
@@ -101,29 +101,27 @@ function stopAudio(){
   document.getElementById('container-audio').innerHTML = "";
 }
 
-function disableButton(buttton){
-  event.target.disabled = true;
-}
-
-function enableButton(button){
-  button.disabled = false;
-}
-
-document.getElementById('btnDraw').addEventListener('click', (event) => {
+document.getElementById('btnDraw').addEventListener('click', event => {
   const isLastElement = temporaryStudents.length === 1;
   playAudio();
-  if(isLastElement){
-    disableButton(event.target);
-  }
+  event.target.disabled = true;
   setDeceleratingTimeout(loadStudent, 100, 10)
     .then(student => {
       updateStudentsLists(student);
       updateListOfDrawnStudents(student.id);
       stopAudio();
       if(!isLastElement) {
-        enableButton(event.target);
+        event.target.disabled = false;
       }
-    });
+    }).catch(err => console.error(err));
+});
+
+document.getElementById('btnReset').addEventListener('click', () => {
+  temporaryStudents = [...students];
+  drawnStudents = [];
+  document.getElementById('container-drawn-students').innerHTML = "";
+  document.getElementById('btnDraw').disabled = false;
+  showStudent(0);
 });
 
 showStudent(defaultStudentImageId);

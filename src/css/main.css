@@ -41,16 +41,27 @@ body {
 
 .container-drawn-students{
   position: fixed;
-  height: 20%;
-  max-width: 50%;
+  height: 30%;
+  max-width: 100%;
   top: 10px;
   left: 10px;
   z-index: 12;
 }
 
 .image-drawn-students {
-  height: 40%;
+  height: 35%;
 }
+
+@media screen and (min-width: 768px) {
+  .container-drawn-students{
+    max-width: 30%;
+  }
+
+  .image-drawn-students {
+    height: 50%;
+  }
+}
+
 
 .buttons-draw{
   bottom: 20px;
