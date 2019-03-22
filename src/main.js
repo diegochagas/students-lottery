@@ -56,29 +56,35 @@ function updateStudentsLists(student){
 
 function showStudent(studentId) {
   document.getElementById('student').innerHTML = `<div id='imgDraw'/>`;
-  document.getElementById('imgDraw').style.backgroundImage = style=`url('./src/images/students/${studentId}.jpg')`;
+  document.getElementById('imgDraw').style.backgroundImage = style=`url('./src/images/${studentId}.png')`;
 }
 
 function updateListOfDrawnStudents (studentId) {
-  const tagImg = `<img class ='image-drawn-students' src='./src/images/students/${studentId}.jpg'/>`;
+  const tagImg = `<img class ='image-drawn-students' src='./src/images/${studentId}.png'/>`;
   document.getElementById('container-drawn-students').innerHTML += tagImg;
 }
 
+
 function loadingStudents(){
   let i = 0;
-  do {
-    setTimeout(function(){
-      const student = drawStudent();
-      showStudent(student.id);
-      if(i < 5000) {
-        i+=300;
-      } else if(i < 7000) {
-        i += 500;
+  let max = 20;
+  let delay = 0;
+  let student = {};
+  let run = function(){
+    student = drawStudent();
+    showStudent(student.id);
+    if(i++ < max) {
+      if(i < 5) {
+        delay = 300;
+      } else if(i < 7) {
+        delay = 500;
       } else {
-        i += 800;
+        delay = 800;
       }
-    }, i);
-  } while (i < 10000);
+      setTimeout(run, delay);
+    }
+  }
+  return student;
 }
 
 function playAudio(){
@@ -108,9 +114,9 @@ document.getElementById('btnDraw').addEventListener('click', (event) => {
   if(isLastElement){
     disableButton(event.target);
   }
-  loadingStudents()
-    .then(() => {
-      const student = drawStudent();
+  //loadingStudents()
+    //.then(() => {
+      const student = loadingStudents();
       showStudent(student.id);
       updateStudentsLists(student);
       updateListOfDrawnStudents(student.id);
@@ -118,12 +124,12 @@ document.getElementById('btnDraw').addEventListener('click', (event) => {
       if(!isLastElement) {
         enableButton(event.target);
       }
-    }).then(() => 
+    /*}).then(() => 
       resolve
     ).catch(err => {
       stopAudio();
       console.error(`Function loading students doesn't work: ${err}`);
-    });
+    });*/
 });
 
 showStudent(defaultStudentImageId);
