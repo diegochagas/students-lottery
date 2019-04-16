@@ -2,7 +2,7 @@
 
 A student lottery made with JavaScript.
 
-## Technologies used
+## Used technologies
 
 - HTML
 - CSS
